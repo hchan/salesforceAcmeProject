@@ -80,6 +80,10 @@
         <apexClass>TestREST</apexClass>
         <enabled>false</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>ViewProjectControllerExtension</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
     <description>Permission Set generated for access to custom object Project for the app Project</description>
     <fieldPermissions>
         <editable>false</editable>

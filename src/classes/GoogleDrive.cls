@@ -160,4 +160,15 @@ public class GoogleDrive {
         HttpResponse res = new Http().send(req);
         return res.getBody();
     }
+    
+    
+    public String getFileListing(String parentId) {
+
+      HttpRequest req = new HttpRequest();
+        req.setEndpoint(ENDPOINT + '?q=' + EncodingUtil.urlEncode('\''+parentId+'\'' + ' in parents', 'UTF-8'));
+        req.setMethod('GET');
+        req.setHeader('Authorization', 'Bearer ' + getRefreshedAccessToken());
+        HttpResponse res = new Http().send(req);
+        return res.getBody();
+    }
 }

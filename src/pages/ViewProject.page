@@ -1,15 +1,25 @@
-<apex:page standardController="Project__c">
+<apex:page standardController="Project__c"  extensions="ViewProjectControllerExtension">
+   
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <hr/>
     <h1>
         File Listing from Google Drive
     </h1>
       
-        <div id="googleDriveFileId" style="visibility:none">{!Project__c.googleDriveFileId__c}</div>
+        <div id="googleDriveFileId" style="display: none">{!Project__c.googleDriveFileId__c}</div>
+        <span id="fileListingJson" style="display: none">{!fileListing}</span>
           <div id="fileListing"></div>
     <script>
            if ($("#googleDriveFileId").text() == "") {
                $("#fileListing").text("Google Drive File Id is missing ... try a page refresh in a few seconds as it may take some time to create the skeleton");
+           } else {
+               var jsonObj = jQuery.parseJSON($("#fileListingJson").text());
+               var fileListingStr = "";
+               for (var i = 0; i < jsonObj.items.length; i++) {
+                   fileListingStr += "<li>" + jsonObj.items[i].title + ",Created Date:" + jsonObj.items[i].createdDate + "</li>";
+               }
+                $("#fileListing").html(fileListingStr );
+              
            }
            console.log("X" + $("#googleDriveFileId").text() + "Y");
             </script>
