@@ -103,13 +103,15 @@ public class GoogleDrive {
         // p.googleDriveFileId__c = p.Name;
         // System.debug('Creating skel' + p.Name);
         GoogleDrive googleDrive = new GoogleDrive();
-        Project__c project = [SELECT Name FROM Project__c WHERE Id = :id];
+        Project__c project = [SELECT Name,googleDriveFileId__c FROM Project__c WHERE Id = :id];
         System.debug('project...');
         System.debug(project);
         //project.googleDriveFileId = 'assssffff';
-        googleDrive.createProjectSkeleton(project.Name);
-     
-       
+        String fileId = googleDrive.createProjectSkeleton(project.Name);
+        System.debug('fileId:' + fileId);
+        project.googleDriveFileId__c = fileId;
+        update project;
+        System.debug('done');
     }
     
     public String createProjectSkeleton(String projectName) {

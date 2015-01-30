@@ -4,9 +4,14 @@
     <h1>
         File Listing from Google Drive
     </h1>
-        <div id="fileListing">xxxxxxxxxxxxxx</div>
+      
+        <div id="googleDriveFileId" style="visibility:none">{!Project__c.googleDriveFileId__c}</div>
+          <div id="fileListing"></div>
     <script>
-            console.log("HERE:" + $("#fileListing").text());
+           if ($("#googleDriveFileId").text() == "") {
+               $("#fileListing").text("Google Drive File Id is missing ... try a page refresh in a few seconds as it may take some time to create the skeleton");
+           }
+           console.log("X" + $("#googleDriveFileId").text() + "Y");
             </script>
     <hr/>
 </apex:page>
