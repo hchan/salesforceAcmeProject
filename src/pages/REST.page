@@ -1,0 +1,4 @@
+<apex:page controller="RESTController" >
+Output:
+<div>{!result}</div>
+</apex:page>
