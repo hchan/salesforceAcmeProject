@@ -1,0 +1,12 @@
+<apex:page standardController="Project__c">
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <hr/>
+    <h1>
+        File Listing from Google Drive
+    </h1>
+        <div id="fileListing">xxxxxxxxxxxxxx</div>
+    <script>
+            console.log("HERE:" + $("#fileListing").text());
+            </script>
+    <hr/>
+</apex:page>

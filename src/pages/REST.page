@@ -1,4 +1,9 @@
 <apex:page controller="RESTController" >
-Output:
-<div>{!result}</div>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+Debug (useful stuff for Henry to debug):
+<textarea rows="15" cols="60" id="myDebug">{!result}</textarea>
+
+<script>
+console.log($("#myDebug").text());
+</script>
 </apex:page>
