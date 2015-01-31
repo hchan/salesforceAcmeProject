@@ -10,7 +10,7 @@ public class GoogleDrive {
     
     
     public String doOAuthInit() {
-        // workaround ... bug with APEX Auth class?
+        // this method isn't used
         HttpRequest req = new HttpRequest();
         HttpResponse res = null;
         req.setEndpoint('https://login.salesforce.com/services/auth/oauth/00Dj0000001rRbSEAU/GoogleLogin2');
@@ -21,6 +21,7 @@ public class GoogleDrive {
     }
     
     public String getGoogleHomepage() {
+        // this method isn't used
         HttpRequest req = new HttpRequest();
         HttpResponse res = null;
         req.setEndpoint('http://www.google.ca');
@@ -52,14 +53,12 @@ public class GoogleDrive {
     
     
     public String getAccessToken() {
-        // doOAuthInit();
         // DAMN you documentation ... 2nd argument of getAccessToken is the type, not name
         return Auth.AuthToken.getAccessToken(PROVIDER_ID, PROVIDER_TYPE);
     }
     
     public String getRefreshedAccessToken() {
-        // Dear APEX, you documentation is all *screwed* and buggy
-        // this is my workaround your bugs
+       
         String accessToken = getAccessToken();
         System.debug('inside getRefreshedAccessToken');
         Map<String, String> responseMap = Auth.AuthToken.refreshAccessToken(PROVIDER_ID, PROVIDER_TYPE, accessToken);
@@ -83,6 +82,7 @@ public class GoogleDrive {
         return res.getBody();
     }
     
+    // called from REST controller - great for 'Testing'
     public String mainFunc() {
         return    createProjectSkeleton('Yo');
         //return doOAuthInit();
@@ -110,6 +110,11 @@ public class GoogleDrive {
         String fileId = googleDrive.createProjectSkeleton(project.Name);
         System.debug('fileId:' + fileId);
         project.googleDriveFileId__c = fileId;
+   
+        Group groupObj = new Group();
+        groupObj.Name = project.Name;
+        insert groupObj;
+        project.groupId__c = groupObj.Id;
         update project;
         System.debug('done');
     }
@@ -119,7 +124,6 @@ public class GoogleDrive {
         String jsonResponse = createFolder(projectName);
         Map<String, Object> root = (Map<String, Object>)JSON.deserializeUntyped(jsonResponse );
         String newFolderId = '' + root.get('id');
-        // TODO save to DB
         copyFileToFolder(getIdOfFolder(WORD_TEMPLATE), newFolderId );
         copyFileToFolder(getIdOfFolder(SPREADSHEET_TEMPLATE), newFolderId );
         return newFolderId ;

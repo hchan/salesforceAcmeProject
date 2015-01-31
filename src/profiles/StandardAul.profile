@@ -70,14 +70,6 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>GoogleDriveController</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>MyHelloWorld</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>MyTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -1211,6 +1203,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Project__c.googleDriveFileId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Project__c.groupId__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

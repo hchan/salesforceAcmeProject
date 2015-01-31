@@ -76,6 +76,17 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>groupId__c</fullName>
+        <externalId>false</externalId>
+        <label>groupId</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Project</label>
     <listViews>
         <fullName>MyView</fullName>

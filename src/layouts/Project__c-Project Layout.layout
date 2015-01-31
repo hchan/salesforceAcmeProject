@@ -19,6 +19,10 @@
                 <behavior>Edit</behavior>
                 <field>googleDriveFileId__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>groupId__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

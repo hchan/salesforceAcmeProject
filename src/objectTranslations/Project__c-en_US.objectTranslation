@@ -16,6 +16,10 @@
         <label><!-- googleDriveFileId --></label>
         <name>googleDriveFileId__c</name>
     </fields>
+    <fields>
+        <label><!-- groupId --></label>
+        <name>groupId__c</name>
+    </fields>
     <layouts>
         <layout>Project Layout</layout>
         <sections>
